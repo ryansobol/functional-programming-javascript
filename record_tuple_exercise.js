@@ -49,6 +49,7 @@ console.log('building',
 )
 
 // DO: Nest a tuple inside a record
+// HRM: I can think of two unique approaches
 const pc = #{}
 
 console.log('nesting',

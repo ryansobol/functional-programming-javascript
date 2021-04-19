@@ -1,4 +1,4 @@
-// GOAL: Use the new record and tuple constructs to make the output all true
+// GOAL: Use the new record and tuple constructs to make the all output display true
 
 import { Record, Tuple } from '@bloomberg/record-tuple-polyfill';
 
@@ -43,13 +43,13 @@ console.log('referencing',
     charisma === 14,
 )
 
-// DO: Build a record from a record
+// DO: Use a record to build a slightly different one
 // HRM: I can think of three unique approaches
 phisti = #{ ...phisti, background: 'Gambler' }
 // phisti = Record(Object.assign({}, phisti, { background: 'Gambler'}))
 // phisti = Record.fromEntries(Object.entries(phisti).map((entry) => entry[0] === 'background' ? ['background', 'Gambler'] : entry))
 
-// DO: Build a tuple from a tuple
+// DO: Use a tuple to build a slightly different one
 // HRM: I can think of four unique approaches
 scores = #[10, ...scores.slice(1, 5), 16]
 // scores = scores.with(0, 10).with(5, 16)
