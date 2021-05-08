@@ -1,24 +1,25 @@
 // GOAL: Use the new record and tuple constructs to make the all output display true
+// SEE: https://2ality.com/2020/05/records-tuples-first-look.html
 
 import { Record, Tuple } from '@bloomberg/record-tuple-polyfill';
 
 // DO: Construct a record
 // HRM: I can think of three unique approaches
-let phisti = { ancestry: 'Gnome', background: 'Sailor', 'class': 'Monk' }
+let punchi = { ancestry: 'Gnome', background: 'Sailor', 'class': 'Monk' }
 
 // DO: Construct a tuple
 // HRM: I can think of three unique approaches
 let scores = [12, 18, 12, 10, 12, 14]
 
 console.log('constructing',
-    phisti === #{ ancestry: 'Gnome', background: 'Sailor', 'class': 'Monk' },
+    punchi === #{ ancestry: 'Gnome', background: 'Sailor', 'class': 'Monk' },
     scores === #[12, 18, 12, 10, 12, 14],
 )
 
 console.log('type checking',
-    //typeof phisti === 'record',   // not implemented correctly in polyfill
+    //typeof punchi === 'record',   // not implemented correctly in polyfill
     //typeof scores === 'tuple',    // not implemented correctly in polyfill
-    Record.isRecord(phisti),
+    Record.isRecord(punchi),
     Tuple.isTuple(scores),
 )
 
@@ -37,14 +38,14 @@ console.log('referencing',
 
 // DO: Use a record to build a slightly different one
 // HRM: I can think of three unique approaches
-phisti = #{}
+punchi = #{}
 
 // DO: Use a tuple to build a slightly different one
 // HRM: I can think of four unique approaches
 scores = #[]
 
 console.log('building',
-    phisti === #{ ancestry: 'Gnome', background: 'Gambler', 'class': 'Monk' },
+    punchi === #{ ancestry: 'Gnome', background: 'Gambler', 'class': 'Monk' },
     scores === #[10, 18, 12, 10, 12, 16],
 )
 
