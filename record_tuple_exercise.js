@@ -1,5 +1,6 @@
 // GOAL: Use the new record and tuple constructs to make the all output display true
 // SEE: https://2ality.com/2020/05/records-tuples-first-look.html
+// SEE: https://github.com/tc39/proposal-record-tuple/blob/master/NS-Proto-Appendix.md
 
 import { Record, Tuple } from '@bloomberg/record-tuple-polyfill';
 
