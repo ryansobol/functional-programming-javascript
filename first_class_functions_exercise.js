@@ -113,7 +113,7 @@ console.log("Return a function as a result",
     fisti === #{name: 'Fisti', ancestry: 'Gnome'}
 )
 
-// Programming languages that support first-class functions enable two features:
+// Programming languages that support first-class functions enable two coding techniques:
 //
 //  1. Higher-order functions
 //  2. Closures
