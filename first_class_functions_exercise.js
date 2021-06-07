@@ -69,6 +69,7 @@ console.log("Store a function in an array",
 //  3. Returns that new tuple of filtered elements as a `result`
 //
 // SEE: https://github.com/tc39/proposal-record-tuple/blob/master/NS-Proto-Appendix.md#tupleprototypepushedvalues
+// SEE: https://en.wikipedia.org/wiki/Higher-order_function
 
 // TYPE: type PC = { name: string; ancestry: string }
 // TYPE: Tuple<PC>
