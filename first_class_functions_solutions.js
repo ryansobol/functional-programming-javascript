@@ -69,7 +69,6 @@ console.log("Store a function in an array",
 //  3. Returns that new tuple of filtered elements as a `result`
 //
 // SEE: https://github.com/tc39/proposal-record-tuple/blob/master/NS-Proto-Appendix.md#tupleprototypepushedvalues
-// SEE: https://en.wikipedia.org/wiki/Higher-order_function
 
 // TYPE: type PC = { name: string; ancestry: string }
 // TYPE: Tuple<PC>
@@ -125,3 +124,11 @@ const fisti = generateGnome('Fisti')
 console.log("Return a function as a result",
     fisti === #{name: 'Fisti', ancestry: 'Gnome'}
 )
+
+// Programming languages that support first-class functions enable two features:
+//
+//  1. Higher-order functions
+//  2. Closures
+//
+// SEE: https://en.wikipedia.org/wiki/Higher-order_function
+// SEE: https://en.wikipedia.org/wiki/Closure_(computer_programming)
