@@ -39,6 +39,7 @@ console.log("Define an anonymous arrow function expression",
 //     return a + b
 // }
 
+// TYPE: (a: number, b: number) => number
 const add = (a, b) => a + b
 
 console.log("Assign a function to a constant",
@@ -51,23 +52,26 @@ console.log("Assign a function to a constant",
 //
 // DO: Store the previously defined `add` function in an array and assign it to the `functions` constant
 
-const functions = [add]
+// TYPE: Array<(a: number, b: number) => number>
+const binaryFunctions = [add]
 
 console.log("Store a function in an array",
-    functions.length === 1,
-    functions[0] === add,
+    binaryFunctions.length === 1,
+    binaryFunctions[0] === add,
 )
 
 // 4. Pass a function to another function as an argument
 //
 // DO: Define a `filter` function that:
 //
-//  1. Accepts a `tuple` of elements and a `callback` function as arguments
+//  1. Accepts a tuple of `elements` and a `callback` function as arguments
 //  2. Creates new tuple with each `element` that passes a test implemented by the callback function
 //  3. Returns that new tuple of filtered elements as a `result`
 //
 // SEE: https://github.com/tc39/proposal-record-tuple/blob/master/NS-Proto-Appendix.md#tupleprototypepushedvalues
 
+// TYPE: type PC = { name: string; ancestry: string }
+// TYPE: Tuple<PC>
 const pcs = #[
     #{name: 'Bilbo', ancestry: 'Halfling'},
     #{name: 'Ezren', ancestry: 'Human'},
@@ -75,12 +79,14 @@ const pcs = #[
     #{name: 'Harsk', ancestry: 'Dwarf'},
 ]
 
+// TYPE: (PC) => boolean
 const isGnome = (pc) => pc.ancestry === 'Gnome'
 
-const filter = (tuple, callback) => {
+// TYPE: (elements: Tuple<PC>, callback: (PC) => boolean) => Tuple<PC>
+const filter = (elements, callback) => {
     let result = #[]
 
-    for (const element of tuple) {
+    for (const element of elements) {
         if (callback(element)) {
             result = result.pushed(element)
         }
@@ -89,6 +95,7 @@ const filter = (tuple, callback) => {
     return result
 }
 
+// TYPE: Tuple<PC>
 const gnomes = filter(pcs, isGnome)
 
 console.log("Pass a function as a argument",
@@ -103,12 +110,15 @@ console.log("Pass a function as a argument",
 //  2. Creates new function that accepts a `name` string and returns a record with that name and ancestry
 //  3. Returns that new function as a result
 
+// TYPE: (ancestry: string) => (name: string) => PC
 const createAncestryGenerator = (ancestry) => {
     return (name) => #{name, ancestry}
 }
 
+// TYPE: (name: string) => PC
 const generateGnome = createAncestryGenerator('Gnome')
 
+// TYPE: PC
 const fisti = generateGnome('Fisti')
 
 console.log("Return a function as a result",
