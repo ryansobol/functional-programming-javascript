@@ -116,7 +116,7 @@ console.log("Return a function as a result",
 // Programming languages that support first-class functions enable two coding techniques:
 //
 //  1. Higher-order functions
-//  2. Closures
+//  2. Closures (also requires lexical scoping)
 //
 // SEE: https://en.wikipedia.org/wiki/Higher-order_function
 // SEE: https://en.wikipedia.org/wiki/Closure_(computer_programming)

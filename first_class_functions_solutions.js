@@ -125,10 +125,10 @@ console.log("Return a function as a result",
     fisti === #{name: 'Fisti', ancestry: 'Gnome'}
 )
 
-// Programming languages that support first-class functions enable two coding techniques:
+// Programming languages that support first-class functions enable two coding constructs:
 //
 //  1. Higher-order functions
-//  2. Closures
+//  2. Closures (also requires lexical scoping)
 //
 // SEE: https://en.wikipedia.org/wiki/Higher-order_function
 // SEE: https://en.wikipedia.org/wiki/Closure_(computer_programming)
