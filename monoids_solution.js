@@ -1,65 +1,92 @@
-
 // Tuple type is a monoid
+//
 // Has a combine operation
 let a = #[1, 2]
 let b = #[3, 4]
 
-console.log(
-  a.concat(b) === #[1, 2, 3, 4],
+console.log("tuple: has combine",
+    a.concat(b) === #[1, 2, 3, 4],
 
     #[...a, ...b] === #[1, 2, 3, 4],
 )
 
-// The combine operation is ssociative
+// The combine operation is associative
 let c = #[5, 6]
 
-console.log(
-  a.concat(b).concat(c) === a.concat(b.concat(c)),
+console.log("tuple: associative combine",
+    a.concat(b).concat(c) === #[1, 2, 3, 4, 5, 6],
+    a.concat(b.concat(c)) === #[1, 2, 3, 4, 5, 6],
 
-    #[...a, ...b, ...c] === #[...a, ...#[...b, ...c]],
+    #[...a, ...b, ...c] === #[1, 2, 3, 4, 5, 6],
+    #[...a, ...#[...b, ...c]] === #[1, 2, 3, 4, 5, 6],
 )
 
-// Has an identity value that works correctly with the combine opeation
+// Has an identity value that works correctly with the combine operation
 
-console.log(
-    #[].concat(a) === a,
+let identity = #[]
 
-    #[...a, ...#[]] === a,
+console.log("tuple: identity combine",
+    a.concat(identity) === a,
+
+    #[...a, ...identity] === a,
 )
 
 // Record type is also a monoid, even though key-value pairs can be overwritten
-//   combine
+//
+// combine
 a = #{ name: 'Punchi' }
 b = #{ ancestry: 'Gnome' }
 
-console.log(
+console.log("record: has combine",
     #{ ...a, ...b } === #{ name: 'Punchi', ancestry: 'Gnome' }
 )
 
 const z = #{ name: 'Ezren' }
 
-console.log(
+console.log("record: has combine (overwrite)",
     #{ ...a, ...z } === #{ name: 'Ezren' }
 )
 
-//   associativty
+// associativty
 c = #{ background: 'Sailor' }
 
-console.log(
-    #{ ...a, ...b, ...c } === #{ ...a, ...#{ ...b, ...c }},
+console.log("record: associative combine",
+    #{ ...a, ...b, ...c } === #{
+    name: 'Punchi',
+    ancestry: 'Gnome',
+    background: 'Sailor'
+},
+
+    #{ ...a, ...#{ ...b, ...c }} === #{
+    name: 'Punchi',
+    ancestry: 'Gnome',
+    background: 'Sailor'
+},
 )
 
 const y = #{ background: 'Street Urchin' }
 
-console.log(
-    #{ ...a, ...b, ...y } === #{ ...a, ...#{ ...b, ...y }},
+console.log("record: associative combine (overwrite)",
+    #{ ...a, ...b, ...y } === #{
+    name: 'Punchi',
+    ancestry: 'Gnome',
+    background: 'Street Urchin'
+},
+
+    #{ ...a, ...#{ ...b, ...y }} === #{
+    name: 'Punchi',
+    ancestry: 'Gnome',
+    background: 'Street Urchin'
+},
 )
 
-//   identity
-console.log(
-    #{ ...a, ...#{}} === a,
+identity = #{ }
+
+// identity
+console.log("record: identity combine",
+    #{ ...a, ...identity } === a,
 )
 
-console.log(
-    #{ ...a, ...z, ...#{}} === z,
+console.log("record: identity combine (overwrite)",
+    #{ ...a, ...z, ...identity } === z,
 )
