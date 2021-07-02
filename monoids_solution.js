@@ -5,7 +5,7 @@ let a = #[1, 2]
 let b = #[3, 4]
 
 console.log(
-    a.concat(b) === #[1, 2, 3, 4],
+  a.concat(b) === #[1, 2, 3, 4],
 
     #[...a, ...b] === #[1, 2, 3, 4],
 )
@@ -14,7 +14,7 @@ console.log(
 let c = #[5, 6]
 
 console.log(
-    a.concat(b).concat(c) === a.concat(b.concat(c)),
+  a.concat(b).concat(c) === a.concat(b.concat(c)),
 
     #[...a, ...b, ...c] === #[...a, ...#[...b, ...c]],
 )
@@ -36,14 +36,30 @@ console.log(
     #{ ...a, ...b } === #{ name: 'Punchi', ancestry: 'Gnome' }
 )
 
-//   maybe associativty
+const z = #{ name: 'Ezren' }
+
+console.log(
+    #{ ...a, ...z } === #{ name: 'Ezren' }
+)
+
+//   associativty
 c = #{ background: 'Sailor' }
 
 console.log(
-    #{...a, ...b, ...c} === #{...a, ...#{...b, ...c}},
+    #{ ...a, ...b, ...c } === #{ ...a, ...#{ ...b, ...c }},
 )
 
-//   maybe identity
+const y = #{ background: 'Street Urchin' }
+
 console.log(
-    #{...a, ...#{}} === a,
+    #{ ...a, ...b, ...y } === #{ ...a, ...#{ ...b, ...y }},
+)
+
+//   identity
+console.log(
+    #{ ...a, ...#{}} === a,
+)
+
+console.log(
+    #{ ...a, ...z, ...#{}} === z,
 )
