@@ -63,7 +63,7 @@ console.log("forEach",
 //  1. Accepts a tuple of `elements` and a `callback` function as arguments
 //  2. Creates a new tuple of results from calling the `callback` function once on each
 //     `element` of the tuple
-//  3. Returns that new tuple of mapped elements as a `result`
+//  3. Returns that new tuple of `mapped` elements as a `result`
 //
 // SEE: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
 
@@ -161,7 +161,7 @@ console.log("reduce",
 //  1. Accepts a tuple of `elements` and a `callback` function as arguments
 //  2. Creates a new tuple by concatenating the results from calling the `callback`
 //     function once on each `element` of the tuple
-//  3. Returns that new tuple of mapped-then-flattened elements as a `result`
+//  3. Returns that new tuple of `mapped`, then "flattened" elements as a `result`
 //
 // SEE: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap
 
