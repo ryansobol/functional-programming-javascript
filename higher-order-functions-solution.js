@@ -34,10 +34,13 @@ const pcs = #[
     #{ name: 'Harsk', ancestry: 'Dwarf' },
 ]
 
-// TYPE: (PC) => void
+// TYPE: (pc: PC) => void
 const introduce = (pc) => issueWarrant(`${pc.name} the ${pc.ancestry}`)
 
-// TYPE: <T>(elements: Tuple<T>, callback: (T) => void) => void
+// TYPE: <T>(
+//     elements: Tuple<T>,
+//     callback: (element: T) => void,
+// ) => void
 const forEach = (elements, callback) => {
     for (const element of elements) {
         callback(element)
@@ -66,16 +69,19 @@ console.log("forEach",
 // TYPE: type Leveled = { level: number }
 // TYPE: type LeveledPC = PC & Leveled
 
-// TYPE: (PC) => LeveledPC
+// TYPE: (pc: PC) => LeveledPC
 let gainLevel = (pc) => #{ ...pc, level: 1 }
 
-// TYPE: <T, U>(elements: Tuple<T>, callback: (element: T) => U) => Tuple<U>
+// TYPE: <T, U>(
+//     elements: Tuple<T>,
+//     callback: (element: T) => U
+// ) => Tuple<U>
 const map = (elements, callback) => {
     let result = #[]
 
     for (const element of elements) {
-        const transformed = callback(element)
-        result = result.pushed(transformed)
+        const mapped = callback(element)
+        result = result.pushed(mapped)
     }
 
     return result
@@ -93,7 +99,7 @@ console.log("map (level 1)",
     ],
 )
 
-// TYPE: (PC | LeveledPC) => LeveledPC
+// TYPE: (pc: PC | LeveledPC) => LeveledPC
 gainLevel = (pc) => #{ ...pc, level: pc.level ? pc.level + 1 : 1 }
 
 // TYPE: LeveledPC
@@ -147,24 +153,37 @@ console.log("reduce",
     levelsAverage === 2,
 )
 
-// TYPE: type SkilledPC = { name: string; ancestry: string; skills: Tuple<string> }
+// DO: Define a `flatMap` higher-order function that:
+//
+//  1. Accepts a tuple of `elements` and a `callback` function as arguments
+//  2. Creates a new tuple by concatenated the results of the `callback` function on each `element` of the tuple
+//  3. Returns that new tuple of mapped-then-flattened elements as a `result`
+//
+// SEE: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap
+
+// TYPE: type Skilled = { skills: Tuple<string> }
+// TYPE: type SkilledPC = PC & Skilled
 // TYPE: Tuple<SkilledPC>
 const pcsSkilled = #[
-    #{ name: 'Bilbo', ancestry: 'Halfling', skills: #['Acrobatics', 'Stealth']},
-    #{ name: 'Ezren', ancestry: 'Human', skills: #['Arcana', 'Society']},
-    #{ name: 'Fisti', ancestry: 'Gnome', skills: #['Crafting', 'Stealth']},
-    #{ name: 'Harsk', ancestry: 'Dwarf', skills: #['Nature', 'Survival']},
+    #{ name: 'Bilbo', ancestry: 'Halfling', skills: #['Acrobatics', 'Stealth'] },
+    #{ name: 'Ezren', ancestry: 'Human', skills: #['Arcana', 'Society'] },
+    #{ name: 'Fisti', ancestry: 'Gnome', skills: #['Crafting', 'Stealth'] },
+    #{ name: 'Harsk', ancestry: 'Dwarf', skills: #['Nature', 'Survival'] },
 ]
 
 // TYPE: (pc: SkilledPC) => Tuple<string>
 const getSkills = (pc) => pc.skills
 
-// TYPE: <T, U>(elements: Tuple<T>, callback: (element: T) => Tuple<U>) => Tuple<U>
+// TYPE: <T, U>(
+//     elements: Tuple<T>,
+//     callback: (element: T) => Tuple<U>,
+// ) => Tuple<U>
 const flatMap = (elements, callback) => {
     let result = #[]
 
     for (const element of elements) {
-        result = result.concat(callback(element))
+        const mapped = callback(element)
+        result = result.concat(mapped)
     }
 
     return result
