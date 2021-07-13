@@ -211,9 +211,9 @@ console.log("flatMap",
 
 // In functional programming languages, many built-in data types are monoids.
 //
-// A monoid is classification of data types which share the following properties:
+// In programming, a monoid is a data type that:
 //
-//  1. Have an binary "combine" operation that is associative
-//  2. Have an identity value that can be combined with other values of the same type
+//  1. Has an binary "combine" operation that is associative
+//  2. Has an identity value that can be combined with other values of the same type
 //
 // SEE: https://en.wikipedia.org/wiki/Monoid
