@@ -55,10 +55,19 @@ console.log("forEach",
     ],
 )
 
-// TYPE: type LeveledPC = { name: string; ancestry: string; level: number }
+// DO: Define a `map` higher-order function that:
+//
+//  1. Accepts a tuple of `elements` and a `callback` function as arguments
+//  2. Creates a new tuple of results from calling `callback` function on each `element`
+//  3. Returns that new tuple of mapped elements as a `result`
+//
+// SEE: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+
+// TYPE: type Leveled = { level: number }
+// TYPE: type LeveledPC = PC & Leveled
 
 // TYPE: (PC) => LeveledPC
-const gainLevel = (pc) => #{...pc, level: pc.level ? pc.level + 1 : 1}
+let gainLevel = (pc) => #{ ...pc, level: 1 }
 
 // TYPE: <T, U>(elements: Tuple<T>, callback: (element: T) => U) => Tuple<U>
 const map = (elements, callback) => {
@@ -83,6 +92,9 @@ console.log("map (level 1)",
         #{ name: 'Harsk', ancestry: 'Dwarf', level: 1 },
     ],
 )
+
+// TYPE: (PC | LeveledPC) => LeveledPC
+gainLevel = (pc) => #{ ...pc, level: pc.level ? pc.level + 1 : 1 }
 
 // TYPE: LeveledPC
 const pcsLevel2 = map(pcsLevel1, gainLevel)
