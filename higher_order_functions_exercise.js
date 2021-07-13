@@ -12,7 +12,7 @@ import { Record, Tuple } from "@bloomberg/record-tuple-polyfill";
 // DO: Define a `forEach` higher-order function that:
 //
 //  1. Accepts a tuple of `elements` and a `callback` function as arguments
-//  2. Executes the `callback` function once for each tuple `element`
+//  2. Calls the `callback` function once on each `element` of the tuple
 //  3. Returns nothing
 //
 // SEE: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
@@ -57,7 +57,8 @@ console.log("forEach",
 // DO: Define a `map` higher-order function that:
 //
 //  1. Accepts a tuple of `elements` and a `callback` function as arguments
-//  2. Creates a new tuple of results from calling `callback` function on each `element`
+//  2. Creates a new tuple of results from calling the `callback` function once on each
+//     `element` of the tuple
 //  3. Returns that new tuple of mapped elements as a `result`
 //
 // SEE: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
@@ -103,8 +104,10 @@ console.log("map (level 2)",
 
 // DO: Define a `reduce` higher-order function that:
 //
-//  1. Accepts a tuple of `elements`, a `callback` function, and an `initial` value as arguments
-//  2. Accumulates the `initial` value with the results of the `callback` function on each `element` of the tuple
+//  1. Accepts a tuple of `elements`, a `callback` function, and an `initial` value as
+//     arguments
+//  2. Accumulates the `initial` value with the results from calling the `callback`
+//     function once on each `element` of the tuple
 //  3. Returns the single, accumulated value as a `result`
 //
 // SEE: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
@@ -135,7 +138,8 @@ console.log("reduce",
 // DO: Define a `flatMap` higher-order function that:
 //
 //  1. Accepts a tuple of `elements` and a `callback` function as arguments
-//  2. Creates a new tuple by concatenated the results of the `callback` function on each `element` of the tuple
+//  2. Creates a new tuple by concatenating the results from calling the `callback`
+//     function once on each `element` of the tuple
 //  3. Returns that new tuple of mapped-then-flattened elements as a `result`
 //
 // SEE: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap
