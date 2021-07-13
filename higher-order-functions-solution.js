@@ -108,6 +108,14 @@ console.log("map (level 2)",
     ],
 )
 
+// DO: Define a `reduce` higher-order function that:
+//
+//  1. Accepts a tuple of `elements`, a `callback` function, and an `initial` value as arguments
+//  2. Accumulates the `initial` value with the results of the `callback` function on each `element` of the tuple
+//  3. Returns the single, accumulated value as a `result`
+//
+// SEE: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
+
 // TYPE: (accumulation: number, pc: LeveledPC) => number
 const accumulateLevel = (accumulation, pc) => accumulation + pc.level
 
