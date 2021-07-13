@@ -4,25 +4,38 @@ import { Record, Tuple } from "@bloomberg/record-tuple-polyfill";
 //
 // SEE: https://en.wikipedia.org/wiki/Higher-order_function
 
-// TYPE: Tuple<string>
-let warnings = #[]
+// A higher-order functions is a function that can do at least one of the following:
+//
+// - Accepts one or more functions as arguments (i.e. The focus of this exercise)
+// - Returns a function as its result
 
-// TYPE: (warning: string) => void
-const warn = (warning) => {
-    warnings = warnings.pushed(warning)
+// DO: Define a `forEach` higher-order function that:
+//
+//  1. Accepts a tuple of `elements` and a `callback` function as arguments
+//  2. Executes the `callback` function once for each tuple `element`
+//  3. Returns nothing
+//
+// SEE: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+
+// TYPE: Tuple<string>
+let warrants = #[]
+
+// TYPE: (warrant: string) => void
+const issueWarrant = (warrant) => {
+    warrants = warrants.pushed(warrant)
 }
 
 // TYPE: type PC = { name: string; ancestry: string }
 // TYPE: Tuple<PC>
 const pcs = #[
-    #{ name: 'Bilbo', ancestry: 'Halfling'},
-    #{ name: 'Ezren', ancestry: 'Human'},
-    #{ name: 'Fisti', ancestry: 'Gnome'},
-    #{ name: 'Harsk', ancestry: 'Dwarf'},
+    #{ name: 'Bilbo', ancestry: 'Halfling' },
+    #{ name: 'Ezren', ancestry: 'Human' },
+    #{ name: 'Fisti', ancestry: 'Gnome' },
+    #{ name: 'Harsk', ancestry: 'Dwarf' },
 ]
 
 // TYPE: (PC) => void
-const announce = (pc) => warn(`${pc.name} the ${pc.ancestry}`)
+const introduce = (pc) => issueWarrant(`${pc.name} the ${pc.ancestry}`)
 
 // TYPE: <T>(elements: Tuple<T>, callback: (T) => void) => void
 const forEach = (elements, callback) => {
@@ -31,14 +44,14 @@ const forEach = (elements, callback) => {
     }
 }
 
-forEach(pcs, announce)
+forEach(pcs, introduce)
 
 console.log("forEach",
-    warnings === #[
-      'Bilbo the Halfling',
-      'Ezren the Human',
-      'Fisti the Gnome',
-      'Harsk the Dwarf',
+    warrants === #[
+        'Bilbo the Halfling',
+        'Ezren the Human',
+        'Fisti the Gnome',
+        'Harsk the Dwarf',
     ],
 )
 
