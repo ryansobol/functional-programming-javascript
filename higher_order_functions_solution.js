@@ -9,6 +9,7 @@ import { Record, Tuple } from "@bloomberg/record-tuple-polyfill";
 // - Accepts one or more functions as arguments (i.e. The focus of this exercise)
 // - Returns a function as its result
 
+
 // DO: Define a `forEach` higher-order function that:
 //
 //  1. Accepts a tuple of `elements` and a `callback` function as arguments
