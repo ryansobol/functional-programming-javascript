@@ -209,7 +209,8 @@ console.log("flatMap",
     ],
 )
 
-// In functional programming languages, many built-in data types are monoids.
+// In functional programming languages, many built-in data types are monoids. In this 
+// exercise, you've worked with a few monoids.
 //
 // In programming, a monoid is a data type that:
 //
