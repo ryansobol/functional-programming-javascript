@@ -188,7 +188,7 @@ const flatMap = (elements, callback) => {
 
     for (const element of elements) {
         const mapped = callback(element)
-        result = result.concat(mapped)
+        result = #[...result, ...mapped]
     }
 
     return result
