@@ -147,13 +147,17 @@ const reduce = (elements, callback, initial) => {
 // TYPE: number
 const levelsTotal = reduce(pcsLevel2, accumulateLevel, 0)
 
+console.log("reduce (total)",
+    levelsTotal === 8,
+)
+
 // TYPE: number
 const pcsTotal = pcsLevel2.length
 
 // TYPE: number
 const levelsAverage = levelsTotal / pcsTotal
 
-console.log("reduce",
+console.log("reduce (average)",
     levelsAverage === 2,
 )
 
