@@ -1,92 +1,175 @@
-// Tuple type is a monoid
+import { Record, Tuple } from '@bloomberg/record-tuple-polyfill';
+
+// GOAL: Use monoids to make the all output display true
 //
-// Has a combine operation
-let a = #[1, 2]
-let b = #[3, 4]
+// SEE: https://en.wikipedia.org/wiki/Monoid
 
-console.log("tuple: has combine",
-    a.concat(b) === #[1, 2, 3, 4],
+// In programming languages, a monoid is a data type that:
+//
+//  1. Has an binary "combine" operation that is associative
+//  2. Has an identity value, which can be combined with other values of the same type
 
-    #[...a, ...b] === #[1, 2, 3, 4],
+
+// The number type in JavaScript is a monoid
+//
+// SEE: The binary combine operation for number
+
+let a = 10
+let b = 6
+
+console.log('number: binary combine',
+    a + b === 16,
 )
 
-// The combine operation is associative
-let c = #[5, 6]
+// SEE: The associativity of number's binary combine operation
 
-console.log("tuple: associative combine",
-    a.concat(b).concat(c) === #[1, 2, 3, 4, 5, 6],
-    a.concat(b.concat(c)) === #[1, 2, 3, 4, 5, 6],
+let c = 1
 
-    #[...a, ...b, ...c] === #[1, 2, 3, 4, 5, 6],
-    #[...a, ...#[...b, ...c]] === #[1, 2, 3, 4, 5, 6],
+console.log('number: associativity of binary combine',
+    (a + b) + c === 17,
+    a + (b + c) === 17,
 )
 
-// Has an identity value that works correctly with the combine operation
+// SEE: The identity value for number, which can be combined with other numbers
 
-let identity = #[]
+let identity = 0
 
-console.log("tuple: identity combine",
+console.log('number: identity value, which can be combined',
+    a + identity === a,
+)
+
+// The string type in JavaScript is also a monoid
+//
+// SEE: The binary combine operations for string
+
+a = 'fire'
+b = 'ball'
+
+console.log('string: binary combine',
+    a + b === 'fireball',
+
+    `${a}${b}` === 'fireball',
+)
+
+// SEE: The associativity of string's binary combine operations
+
+c = 's'
+
+console.log('string: associativity of binary combine',
+    (a + b) + c === 'fireballs',
+    a + (b + c) === 'fireballs',
+
+    `${`${a}${b}`}${c}` === 'fireballs',
+    `${a}${`${b}${c}`}` === 'fireballs',
+)
+
+// SEE: The identity value for string, which can be combined with other strings
+
+identity = ''
+
+console.log('number: identity value, which can be combined',
+    a + identity === a,
+
+    `${a}${identity}` === a,
+)
+
+// The tuple type in JavaScript is also a monoid
+//
+// DO: Determine the expected result of tuple's binary combine operations
+
+a = #[12, 18]
+b = #[12, 10]
+
+console.log('tuple: binary combine',
+    a.concat(b) === #[12, 18, 12, 10],
+
+    #[...a, ...b] === #[12, 18, 12, 10],
+)
+
+// DO: Determine the expected result of the associativity of tuple's binary combine
+// operations
+
+c = #[12, 14]
+
+console.log('tuple: associativity of binary combine',
+    (a.concat(b)).concat(c) === #[12, 18, 12, 10, 12, 14],
+    a.concat(b.concat(c)) === #[12, 18, 12, 10, 12, 14],
+
+    #[...#[...a, ...b], ...c] === #[12, 18, 12, 10, 12, 14],
+    #[...a, ...#[...b, ...c]] === #[12, 18, 12, 10, 12, 14],
+)
+
+// DO: Determine the identity value for tuple, which can be combined with other tuples
+
+identity = #[]
+
+console.log('tuple: identity value, which can be combined',
     a.concat(identity) === a,
 
     #[...a, ...identity] === a,
 )
 
-// Record type is also a monoid, even though key-value pairs can be overwritten
+// The record type in JavaScript is also a monoid, even though key-value pairs can be
+// overwritten
 //
-// combine
+// DO: Determine the expected result of record's binary combine operations
+
 a = #{ name: 'Punchi' }
 b = #{ ancestry: 'Gnome' }
 
-console.log("record: has combine",
+console.log('record: binary combine',
     #{ ...a, ...b } === #{ name: 'Punchi', ancestry: 'Gnome' }
 )
 
 const z = #{ name: 'Ezren' }
 
-console.log("record: has combine (overwrite)",
+console.log('record: binary combine (overwrite)',
     #{ ...a, ...z } === #{ name: 'Ezren' }
 )
 
-// associativty
+// DO: Determine the expected result of the associativity of record's binary combine
+// operation
+
 c = #{ background: 'Sailor' }
 
-console.log("record: associative combine",
+console.log('record: associativity of binary combine',
     #{ ...a, ...b, ...c } === #{
-    name: 'Punchi',
-    ancestry: 'Gnome',
-    background: 'Sailor'
-},
+        name: 'Punchi',
+        ancestry: 'Gnome',
+        background: 'Sailor'
+    },
 
     #{ ...a, ...#{ ...b, ...c }} === #{
-    name: 'Punchi',
-    ancestry: 'Gnome',
-    background: 'Sailor'
-},
+        name: 'Punchi',
+        ancestry: 'Gnome',
+        background: 'Sailor'
+    },
 )
 
 const y = #{ background: 'Street Urchin' }
 
-console.log("record: associative combine (overwrite)",
+console.log('record: associativity of binary combine (overwrite)',
     #{ ...a, ...b, ...y } === #{
-    name: 'Punchi',
-    ancestry: 'Gnome',
-    background: 'Street Urchin'
-},
+        name: 'Punchi',
+        ancestry: 'Gnome',
+        background: 'Street Urchin'
+    },
 
     #{ ...a, ...#{ ...b, ...y }} === #{
-    name: 'Punchi',
-    ancestry: 'Gnome',
-    background: 'Street Urchin'
-},
+        name: 'Punchi',
+        ancestry: 'Gnome',
+        background: 'Street Urchin'
+    },
 )
 
-identity = #{ }
+identity = #{}
 
-// identity
-console.log("record: identity combine",
+// DO: Determine the identity value for record, which can be combined with other tuples
+
+console.log('record: identity value, which can be combined',
     #{ ...a, ...identity } === a,
 )
 
-console.log("record: identity combine (overwrite)",
+console.log('record: identity value, which can be combined (overwrite)',
     #{ ...a, ...z, ...identity } === z,
 )
