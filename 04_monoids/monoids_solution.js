@@ -173,3 +173,9 @@ console.log('record: identity value, which can be combined',
 console.log('record: identity value, which can be combined (overwrite)',
     #{ ...a, ...z, ...identity } === z,
 )
+
+// Benefits of monoids:
+//
+// #1 Monoids can be reduced into a single value
+// #2 Monoids can be incrementally accumulated
+// #3 Combining monoids can be parallelized
