@@ -6,7 +6,7 @@ import { Record, Tuple } from '@bloomberg/record-tuple-polyfill';
 
 // In programming languages, a monoid is a data type that:
 //
-//  1. Has an binary "combine" operation that is associative
+//  1. Has a binary "combine" operation that is associative
 //  2. Has an identity value, which can be combined with other values of the same type
 
 
