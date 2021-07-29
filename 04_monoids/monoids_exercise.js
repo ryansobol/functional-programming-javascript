@@ -133,7 +133,7 @@ console.log('record: binary combine (overwrite)',
 c = #{ background: 'Sailor' }
 
 console.log('record: associativity of binary combine',
-    #{ ...a, ...b, ...c } === undefined,
+    #{ ...#{...a, ...b}, ...c } === undefined,
 
     #{ ...a, ...#{ ...b, ...c }} === undefined,
 )
@@ -141,9 +141,9 @@ console.log('record: associativity of binary combine',
 const y = #{ background: 'Street Urchin' }
 
 console.log('record: associativity of binary combine (overwrite)',
-    #{ ...a, ...b, ...y } === undefined,
+    #{ ...#{...a, ...c}, ...y } === undefined,
 
-    #{ ...a, ...#{ ...b, ...y }} === undefined,
+    #{ ...a, ...#{ ...c, ...y }} === undefined,
 )
 
 identity = undefined,

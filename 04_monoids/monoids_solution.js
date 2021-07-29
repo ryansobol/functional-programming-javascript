@@ -133,7 +133,7 @@ console.log('record: binary combine (overwrite)',
 c = #{ background: 'Sailor' }
 
 console.log('record: associativity of binary combine',
-    #{ ...a, ...b, ...c } === #{
+    #{ ...#{...a, ...b}, ...c } === #{
         name: 'Punchi',
         ancestry: 'Gnome',
         background: 'Sailor'
@@ -149,15 +149,13 @@ console.log('record: associativity of binary combine',
 const y = #{ background: 'Street Urchin' }
 
 console.log('record: associativity of binary combine (overwrite)',
-    #{ ...a, ...b, ...y } === #{
+    #{ ...#{ ...a, ...c}, ...y } === #{
         name: 'Punchi',
-        ancestry: 'Gnome',
         background: 'Street Urchin'
     },
 
-    #{ ...a, ...#{ ...b, ...y }} === #{
+    #{ ...a, ...#{ ...c, ...y }} === #{
         name: 'Punchi',
-        ancestry: 'Gnome',
         background: 'Street Urchin'
     },
 )
