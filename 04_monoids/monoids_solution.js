@@ -177,3 +177,4 @@ console.log('record: identity value, which can be combined (overwrite)',
 // #1 Monoids can be reduced to a single value
 // #2 This reduction can be incrementally accumulated
 // #3 This reduction can be parallelized
+// #4 The reduction works even when data is empty (i.e. missing)
