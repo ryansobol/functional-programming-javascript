@@ -96,7 +96,7 @@ console.log("Pass a function as a argument",
 //
 // DO: Define a `createAncestryGenerator` function that:
 //
-//  1. Accepts an `ancestry` string as an agrument
+//  1. Accepts an `ancestry` string as an argument
 //  2. Creates new function that accepts a `name` string and returns a record with that name and ancestry
 //  3. Returns that new function as a result
 
