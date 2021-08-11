@@ -50,7 +50,7 @@ console.log("Assign a function to a constant",
 
 // 3. Store a function in a data structure
 //
-// DO: Store the previously defined `add` function in an array and assign it to the `functions` constant
+// DO: Store the previously defined `add` function in an array and assign it to the `binaryFunctions` constant
 
 // TYPE: Array<(a: number, b: number) => number>
 const binaryFunctions = undefined
