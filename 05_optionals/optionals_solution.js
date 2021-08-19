@@ -45,7 +45,7 @@ class Option {
             return this._value
         }
 
-        throw new TypeError("Option is empty")
+        throw new TypeError('Option is empty')
     }
 
     // TYPE: <T>(T) => T
@@ -81,7 +81,7 @@ console.log(nameHalfing)
 getNameByAncestry = (pcs, ancestry) => {
     const result = pcs.find((pc) => pc.ancestry === ancestry)
 
-    return result !== null && result !== undefined ? result.name : "UNKNOWN"
+    return result !== null && result !== undefined ? result.name : 'UNKNOWN'
 }
 
 // TYPE: string
@@ -93,7 +93,7 @@ console.log(nameElf)
 getNameByAncestry = (pcs, ancestry) => {
     const result = new Option(pcs.find((pc) => pc.ancestry === ancestry))
 
-    return result.isPresent() ? result.get().name : "UNKNOWN"
+    return result.isPresent() ? result.get().name : 'UNKNOWN'
 }
 
 // TYPE: string
@@ -105,9 +105,10 @@ console.log(nameElf)
 getNameByAncestry = (pcs, ancestry) => {
     const result = new Option(pcs.find((pc) => pc.ancestry === ancestry))
 
-    return result.orElse("UNKNOWN")
+    return result.orElse(#{ name: 'UNKNOWN', ancestry: 'UNKNOWN' }).name
 
-    // return new Option(pcs.find((pc) => pc.ancestry === ancestry)).orElse("UNKNOWN")
+    // return new Option(pcs.find((pc) => pc.ancestry === ancestry))
+    //     .orElse(#{ name: 'UNKNOWN', ancestry: 'UNKNOWN' })
 }
 
 // TYPE: string
